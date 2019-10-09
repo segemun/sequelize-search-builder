@@ -50,7 +50,7 @@ res.json({
 #### Equal:
 ```javascript
 // HTTP:
-?filter[name]=John&&filter[surname]=Smith
+?filter[name]=John&filter[surname]=Smith
 // req.query:
 { filter: { name: 'John', surname: 'Smith' } }
 // getWhereQuery()
@@ -60,7 +60,7 @@ res.json({
 #### Equal (OR):
 ```javascript
 // HTTP:
-?filter[name]=John&&filter[surname]=Smith&&filter[_condition]=or
+?filter[name]=John&filter[surname]=Smith&filter[_condition]=or
 // req.query:
 { filter: { name: 'John', surname: 'Smith', _condition: 'or', } }
 // getWhereQuery()
@@ -78,6 +78,8 @@ res.json({
 ```
 
 You can find more examples in the tests of the project (test/index.js)
+
+Git repository with DB tests: https://github.com/segemun/sequelize-search-builder-db-tests
 
 ## Allowed query conditions
 | Request Option|Sequelize Symbol|Description |
