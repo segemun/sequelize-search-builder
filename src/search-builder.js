@@ -5,21 +5,23 @@ const OrderBuilder = require('./order-builder');
 
 class SearchBuilder extends BuilderAbstract {
   getWhereQuery() {
-    return SearchBuilder.prepareResponse(new WhereBuilder(this.Sequelize, this.request[this.config.fields.filter])
-      .getQuery());
+    return SearchBuilder
+      .prepareResponse(new WhereBuilder(this.Sequelize, this.request[this.config.fields.filter])
+        .getQuery());
   }
 
   getOrderQuery() {
-    return SearchBuilder.prepareResponse(new OrderBuilder(this.Sequelize, this.request[this.config.fields.order])
-      .getQuery());
+    return SearchBuilder
+      .prepareResponse(new OrderBuilder(this.Sequelize, this.request[this.config.fields.order])
+        .getQuery());
   }
-  
+
   getLimitQuery() {
-    return this.request[this.config.fields.limit] || this.config['default-limit'] || null;
+    return SearchBuilder.prepareIntegerQuery(this.request[this.config.fields.limit]) || this.config['default-limit'] || null;
   }
-  
+
   getOffsetQuery() {
-    return this.request[this.config.fields.offset] || null;
+    return SearchBuilder.prepareIntegerQuery(this.request[this.config.fields.offset]) || null;
   }
 
   getFullQuery(target = {}) {
@@ -35,6 +37,11 @@ class SearchBuilder extends BuilderAbstract {
 
   static prepareResponse(query) {
     return (_.isEmpty(query) && Object.getOwnPropertySymbols(query).length === 0) ? null : query;
+  }
+
+  static prepareIntegerQuery(query) {
+    const intQuery = parseInt(query, 10);
+    return (Number.isInteger(intQuery) && intQuery >= 0) ? intQuery : null;
   }
 }
 

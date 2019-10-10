@@ -151,4 +151,21 @@ module.exports = [
       },
     },
   },
+  {
+    it: '(string request) Equal operator with AND condition (?filter[key1][eq]=value1&filter[key2][eq]=value2&filter[_condition]=and)',
+    request: 'filter[key1][eq]=value1&filter[key2][eq]=value2&filter[_condition]=and',
+    expected: {
+      [Sequelize.Op.and]: {
+        key1: 'value1',
+        key2: 'value2',
+      },
+    },
+  },
+  {
+    it: '(string request) Equal simple (?key=value)',
+    request: 'filter[key]=value',
+    expected: {
+      key: 'value',
+    },
+  },
 ];

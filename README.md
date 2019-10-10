@@ -45,6 +45,8 @@ res.json({
 });
 ```
 
+You can set HTTP query string as second parameter for Seach Builder constructor (it will parse by 'qs' library to object).
+
 ## Request Examples
 
 #### Equal:

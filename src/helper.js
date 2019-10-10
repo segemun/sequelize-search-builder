@@ -1,5 +1,7 @@
+const rc = require('rc');
 const defaultConfig = require('../config');
-const config = require('rc')('sequelize-search-builder', defaultConfig);
+
+const config = rc('sequelize-search-builder', defaultConfig);
 
 const helpers = {
   isComparableField: key => key[0] !== '_',
@@ -20,12 +22,12 @@ const helpers = {
 
     return query;
   },
-  
+
   log: (mode, message) => {
     if (config.logging) {
       console[mode](message);
     }
-  }
+  },
 };
 
 module.exports = helpers;

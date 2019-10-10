@@ -31,11 +31,13 @@ function compareDataset(row, request, expected, methodName) {
 }
 
 function compareWhereDataset(row) {
-  compareDataset(row, { filter: row.request }, row.expected, 'getWhereQuery');
+  const request = (typeof row.request === 'object') ? { filter: row.request } : row.request;
+  compareDataset(row, request, row.expected, 'getWhereQuery');
 }
 
 function compareOrderDataset(row) {
-  compareDataset(row, { order: row.request }, row.expected, 'getOrderQuery');
+  const request = (typeof row.request === 'object') ? { order: row.request } : row.request;
+  compareDataset(row, request, row.expected, 'getOrderQuery');
 }
 
 describe('SearchBuilder', () => {
@@ -81,13 +83,19 @@ describe('SearchBuilder', () => {
   describe('OrderBuilder', () => {
     orderData.forEach(compareOrderDataset);
   });
-  
+
   describe('LimitBuilder', () => {
     compareDataset({ it: 'Test limit' }, { limit: 100 }, 100, 'getLimitQuery');
     compareDataset({ it: 'Test limit default' }, {}, 10, 'getLimitQuery');
+    compareDataset({ it: 'Test limit string' }, { limit: '100' }, 100, 'getLimitQuery');
+    compareDataset({ it: 'Test limit string' }, { limit: 'string' }, 10, 'getLimitQuery');
+    compareDataset({ it: 'Test limit string' }, { limit: '100_string' }, 100, 'getLimitQuery');
   });
-  
+
   describe('OffsetBuilder', () => {
     compareDataset({ it: 'Test offset' }, { offset: 10 }, 10, 'getOffsetQuery');
+    compareDataset({ it: 'Test limit string' }, { offset: '100' }, 100, 'getOffsetQuery');
+    compareDataset({ it: 'Test limit string' }, { offset: 'string' }, null, 'getOffsetQuery');
+    compareDataset({ it: 'Test limit string' }, { offset: '100_string' }, 100, 'getOffsetQuery');
   });
 });
