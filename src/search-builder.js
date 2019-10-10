@@ -7,12 +7,14 @@ class SearchBuilder extends BuilderAbstract {
   getWhereQuery() {
     return SearchBuilder
       .prepareResponse(new WhereBuilder(this.Sequelize, this.request[this.config.fields.filter])
+        .setConfig(this.config)
         .getQuery());
   }
 
   getOrderQuery() {
     return SearchBuilder
       .prepareResponse(new OrderBuilder(this.Sequelize, this.request[this.config.fields.order])
+        .setConfig(this.config)
         .getQuery());
   }
 
@@ -31,7 +33,7 @@ class SearchBuilder extends BuilderAbstract {
       limit: this.getLimitQuery(),
       offset: this.getOffsetQuery(),
     };
-    console.log(source);
+
     return Object.assign(target, source);
   }
 

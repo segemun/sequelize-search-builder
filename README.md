@@ -105,19 +105,30 @@ You can redefine configuration variables in rc file
 
 Just create .sequelize-search-builderrc file in root folder of your project
 
+Or set third argument to Search Builder constructor
+
+RC file example: 
+
 ```javascript
 {
-  "logging": true, 
-  "fields": {
-    "filter" : "filter",
-    "order"  : "order",
-    "limit"  : "limit",
-    "offset" : "offset"
+  'logging': true, 
+  'fields': {
+    'filter' : 'filter',
+    'order'  : 'order',
+    'limit'  : 'limit',
+    'offset' : 'offset'
   },
-  "default-limit": 10
+  'default-limit': 10
 }
 ```
 
+Constructor example:
+
+```javascript
+new searchBuilder(models.Sequelize, req.query, {
+    logging: false,
+})
+```
 
 ## Contribute
 You are Welcome =)

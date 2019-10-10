@@ -98,4 +98,40 @@ describe('SearchBuilder', () => {
     compareDataset({ it: 'Test limit string' }, { offset: 'string' }, null, 'getOffsetQuery');
     compareDataset({ it: 'Test limit string' }, { offset: '100_string' }, 100, 'getOffsetQuery');
   });
+
+  describe('Config setter', () => {
+    it('Test custom configs', (done) => {
+      const expected = {
+        where: { key1: 'value1' },
+        order: [['key1', 'desc']],
+        limit: 100,
+        offset: null,
+      };
+
+      const expectedDefaultConfigs = {
+        where: null,
+        order: [['key1', 'desc']],
+        limit: 10,
+        offset: null,
+      };
+
+      const query = {
+        f: { key1: 'value1' },
+        order: { key1: 'desc' },
+      };
+
+      const config = {
+        fields: { filter: 'f' },
+        'default-limit': 100,
+      };
+
+      let searchBuilder = new SearchBuilder(Sequelize, query);
+      searchBuilder.setConfig(config);
+      expect(_.isEqual(searchBuilder.getFullQuery(), expected)).to.equal(true);
+
+      searchBuilder = new SearchBuilder(Sequelize, query);
+      expect(_.isEqual(searchBuilder.getFullQuery(), expectedDefaultConfigs)).to.equal(true);
+      done();
+    });
+  });
 });
