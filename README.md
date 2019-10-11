@@ -111,14 +111,14 @@ RC file example:
 
 ```javascript
 {
-  'logging': true, 
-  'fields': {
-    'filter' : 'filter',
-    'order'  : 'order',
-    'limit'  : 'limit',
-    'offset' : 'offset'
+  "logging": true,
+  "fields": {
+    "filter" : "filter",
+    "order"  : "order",
+    "limit"  : "limit",
+    "offset" : "offset"
   },
-  'default-limit': 10
+  "default-limit": 10
 }
 ```
 
