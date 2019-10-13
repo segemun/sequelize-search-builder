@@ -105,7 +105,7 @@ You can redefine configuration variables in rc file
 
 Just create .sequelize-search-builderrc file in root folder of your project
 
-Or set third argument to Search Builder constructor
+Or use setter for 'config' parameter (setConfig)
 
 RC file example: 
 
@@ -122,12 +122,13 @@ RC file example:
 }
 ```
 
-Constructor example:
+Setter example:
 
 ```javascript
-new searchBuilder(models.Sequelize, req.query, {
-    logging: false,
-})
+new searchBuilder(models.Sequelize, req.query)
+    .setConfig({
+        logging: false,
+    });
 ```
 
 ## Contribute
