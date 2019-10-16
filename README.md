@@ -66,7 +66,7 @@ You can set HTTP query string as second parameter for Seach Builder constructor 
 // req.query:
 { filter: { name: 'John', surname: 'Smith', _condition: 'or', } }
 // getWhereQuery()
-{ [Symbol(or)]: name: 'John', surname: 'Smith' }
+{ [Symbol(or)]: {name: 'John', surname: 'Smith'} }
 ```
 
 #### Order:
