@@ -84,20 +84,22 @@ You can find more examples in the tests of the project (test/index.js)
 Git repository with DB tests: https://github.com/segemun/sequelize-search-builder-db-tests
 
 ## Allowed query conditions
-| Request Option|Sequelize Symbol|Description |
-|---------|-----|------------|
-| eq (=)  | = (no Symbol) | Equal
-| gt     |   Sequelize.Op.gt | Greater than
-| gte      |    Sequelize.Op.gte | Greater than or equal
-| lt      |    Sequelize.Op.lt | Less than
-| lte      |    Sequelize.Op.lte | Less than or equal
-| ne      |    Sequelize.Op.ne | Not equal
-| between      |    Sequelize.Op.between | Between [value1, value2]
-| notBetween      |    Sequelize.Op.notBetween | Not Between [value1, value2]
-| in     |    Sequelize.Op.in | In value list [value1, value2, ...]
-| notIn     |    Sequelize.Op.notIn | Not in value list [value1, value2, ...]
-| like     |    Sequelize.Op.like | Like search (%value, value%, %value%)
-| notLike     |    Sequelize.Op.notLike | Not like search (%value, value%, %value%)
+| Request Option|Sequelize Symbol         |Description |
+|---------------|-------------------------|------------|
+| eq (=)        | = (no Symbol)           | Equal
+| gt            | Sequelize.Op.gt         | Greater than
+| gte           | Sequelize.Op.gte        | Greater than or equal
+| lt            | Sequelize.Op.lt         | Less than
+| lte           | Sequelize.Op.lte        | Less than or equal
+| ne            | Sequelize.Op.ne         | Not equal
+| between       | Sequelize.Op.between    | Between [value1, value2]
+| notBetween    | Sequelize.Op.notBetween | Not Between [value1, value2]
+| in            | Sequelize.Op.in         | In value list [value1, value2, ...]
+| notIn         | Sequelize.Op.notIn      | Not in value list [value1, value2, ...]
+| like          | Sequelize.Op.like       | Like search (%value, value%, %value%)
+| notLike       | Sequelize.Op.notLike    | Not like search (%value, value%, %value%)
+| iLike         | Sequelize.Op.iLike      | case insensitive LIKE (PG only)
+| notILike      | Sequelize.Op.notILike   | case insensitive NOT LIKE (PG only)
 
 ## Configuration
 
