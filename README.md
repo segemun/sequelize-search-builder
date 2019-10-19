@@ -69,6 +69,45 @@ You can set HTTP query string as second parameter for Seach Builder constructor 
 { [Symbol(or)]: {name: 'John', surname: 'Smith'} }
 ```
 
+#### Conditions:
+```javascript
+// HTTP:
+filter[age][gt]=100&filter[age][lt]=10&filter[age][_condition]=or&filter[name][iLike]=%john%&filter[_condition]=or
+// req.query
+{
+  filter: {
+    age: {
+      gt: 100,
+      lt: 10,
+      _condition: 'or',
+    },
+    name: {
+      iLike: '%john%',
+    },
+    _condition: 'or',
+  },
+}
+// getWhereQuery()
+{
+  [Sequelize.Op.or]: {
+    [Sequelize.Op.or]: [{
+      age: {
+        [Sequelize.Op.gt]: 100,
+      },
+    }, {
+      age: {
+        [Sequelize.Op.lt]: 10,
+      },
+    }],
+    name: {
+      [Sequelize.Op.like]: '%john%',
+    },
+  },
+}
+```
+
+If _condition parameter is absent - "and" will be use by default
+
 #### Order:
 ```javascript
 // HTTP:

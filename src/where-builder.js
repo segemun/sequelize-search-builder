@@ -30,6 +30,10 @@ class WhereBuilder extends BuilderAbstract {
       conditionQuery = {
         [Sequelize.Op[request._condition]]: query,
       };
+    } else if (Array.isArray(query) && query.length > 1) {
+      conditionQuery = {
+        [Sequelize.Op.and]: query,
+      };
     } else {
       conditionQuery = query;
     }
