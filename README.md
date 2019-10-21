@@ -152,7 +152,7 @@ RC file example:
 
 ```javascript
 {
-  "logging": true,
+  "logging": false,
   "fields": {
     "filter" : "filter",
     "order"  : "order",
@@ -168,7 +168,7 @@ Setter example:
 ```javascript
 new searchBuilder(models.Sequelize, req.query)
     .setConfig({
-        logging: false,
+        logging: true,
     });
 ```
 
