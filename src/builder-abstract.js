@@ -28,7 +28,7 @@ class BuilderAbstract {
 
   static prepareRequest(request = {}) {
     if (typeof request === 'string') {
-      return qs.parse(request);
+      return qs.parse(request, { ignoreQueryPrefix: true });
     }
 
     return request;

@@ -2,7 +2,8 @@
     "extends": "airbnb-base",
     "rules": {
       "no-underscore-dangle": 0,
-      "no-console": "off"
+      "no-console": "off",
+      "linebreak-style": 0
     },
     "plugins": [
       "mocha"

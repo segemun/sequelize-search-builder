@@ -168,4 +168,11 @@ module.exports = [
       key: 'value',
     },
   },
+  {
+    it: '(string request) Equal simple (?key=value)',
+    request: '?filter[key]=value',
+    expected: {
+      key: 'value',
+    },
+  },
 ];
