@@ -1,6 +1,9 @@
 const BuilderAbstract = require('./builder-abstract');
 const helper = require('./helper');
 
+const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike'];
+const allowedConditionsArray = ['between', 'notBetween', 'in', 'notIn'];
+
 class WhereBuilder extends BuilderAbstract {
   getQuery() {
     const { request } = this;
@@ -49,50 +52,24 @@ class WhereBuilder extends BuilderAbstract {
       .filter(key => helper.isComparableField(key))
       .forEach((key) => {
         const value = values[key];
-        switch (key) {
-          case 'eq':
-            fieldQuery.push(
-              helper.getEqualOp(fieldKey, value),
-            );
-            break;
-          case 'gt':
-          case 'gte':
-          case 'lt':
-          case 'lte':
-          case 'ne':
-          case 'like':
-          case 'notLike':
-          case 'iLike':
-          case 'notILike':
-            fieldQuery.push({
-              [fieldKey]: {
-                [Sequelize.Op[key]]: value,
-              },
-            });
-            break;
-          case 'between':
-          case 'notBetween':
-          case 'in':
-          case 'notIn':
-            if (Array.isArray(value)) {
-              fieldQuery.push({
-                [fieldKey]: {
-                  [Sequelize.Op[key]]: value,
-                },
-              });
-            }
-            break;
-          default:
-            helper.log('error', `${key} operator is missing`);
-            break;
+
+        if (key === 'eq') {
+          fieldQuery.push(
+            helper.getEqualOp(fieldKey, value),
+          );
+        } else if (allowedConditions.indexOf(key) !== -1
+        || (allowedConditionsArray.indexOf(key) !== -1 && Array.isArray(value))) {
+          fieldQuery.push({
+            [fieldKey]: {
+              [Sequelize.Op[key]]: value,
+            },
+          });
+        } else {
+          helper.log('error', `${key} operator is missing`);
         }
       });
 
-    if (fieldQuery.length > 1) {
-      return this._getConditionQuery(fieldQuery, values);
-    }
-
-    return fieldQuery[0];
+    return fieldQuery.length > 1 ? this._getConditionQuery(fieldQuery, values) : fieldQuery[0];
   }
 }
 
