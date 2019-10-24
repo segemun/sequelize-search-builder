@@ -1,5 +1,5 @@
 /* global describe it */
-const _ = require('lodash');
+const isEqual = require('lodash.isequal');
 const { expect } = require('chai');
 const Sequelize = require('sequelize');
 const SearchBuilder = require('../src/search-builder');
@@ -28,7 +28,7 @@ function compareDataset(row, request, expected, methodName) {
     const searchBuilder = new SearchBuilder(Sequelize, request);
     const query = searchBuilder[methodName]();
 
-    expect(_.isEqual(query, expected)).to.equal(true);
+    expect(isEqual(query, expected)).to.equal(true);
     done();
   });
 }
@@ -140,10 +140,10 @@ describe('SearchBuilder', () => {
 
       let searchBuilder = new SearchBuilder(Sequelize, query);
       searchBuilder.setConfig(config);
-      expect(_.isEqual(searchBuilder.getFullQuery(), expected)).to.equal(true);
+      expect(isEqual(searchBuilder.getFullQuery(), expected)).to.equal(true);
 
       searchBuilder = new SearchBuilder(Sequelize, query);
-      expect(_.isEqual(searchBuilder.getFullQuery(), expectedDefaultConfigs)).to.equal(true);
+      expect(isEqual(searchBuilder.getFullQuery(), expectedDefaultConfigs)).to.equal(true);
       done();
     });
   });

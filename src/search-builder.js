@@ -1,4 +1,4 @@
-const _ = require('lodash');
+const isEmpty = require('lodash.isempty');
 const BuilderAbstract = require('./builder-abstract');
 const WhereBuilder = require('./where-builder');
 const OrderBuilder = require('./order-builder');
@@ -36,7 +36,7 @@ class SearchBuilder extends BuilderAbstract {
   }
 
   static prepareResponse(query) {
-    return (_.isEmpty(query) && Object.getOwnPropertySymbols(query).length === 0) ? null : query;
+    return (isEmpty(query) && Object.getOwnPropertySymbols(query).length === 0) ? null : query;
   }
 
   static prepareIntegerQuery(query) {

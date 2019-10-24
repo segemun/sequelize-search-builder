@@ -1,6 +1,6 @@
 const rc = require('rc');
 const qs = require('qs');
-const _ = require('lodash');
+const merge = require('lodash.merge');
 const defaultConfig = require('../config');
 
 const config = rc('sequelize-search-builder', defaultConfig);
@@ -18,7 +18,7 @@ class BuilderAbstract {
 
   setConfig(value) {
     if (value !== null && typeof value === 'object') {
-      this.config = _.merge(this.config, value);
+      this.config = merge(this.config, value);
     } else {
       console.error('Config parameter should be an object');
     }
