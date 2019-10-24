@@ -27,14 +27,12 @@ class SearchBuilder extends BuilderAbstract {
   }
 
   getFullQuery(target = {}) {
-    const source = {
+    return Object.assign({}, target, {
       where: this.getWhereQuery(),
       order: this.getOrderQuery(),
       limit: this.getLimitQuery(),
       offset: this.getOffsetQuery(),
-    };
-
-    return Object.assign(target, source);
+    });
   }
 
   static prepareResponse(query) {

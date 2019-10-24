@@ -49,7 +49,7 @@ class WhereBuilder extends BuilderAbstract {
     const fieldQuery = [];
 
     Object.keys(values)
-      .filter(key => helper.isComparableField(key))
+      .filter(helper.isComparableField)
       .forEach((key) => {
         const value = values[key];
 
@@ -57,8 +57,8 @@ class WhereBuilder extends BuilderAbstract {
           fieldQuery.push(
             helper.getEqualOp(fieldKey, value),
           );
-        } else if (allowedConditions.indexOf(key) !== -1
-        || (allowedConditionsArray.indexOf(key) !== -1 && Array.isArray(value))) {
+        } else if (allowedConditions.includes(key)
+        || (allowedConditionsArray.includes(key) && Array.isArray(value))) {
           fieldQuery.push({
             [fieldKey]: {
               [Sequelize.Op[key]]: value,
