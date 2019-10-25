@@ -3,17 +3,24 @@ const BuilderAbstract = require('./builder-abstract');
 const WhereBuilder = require('./where-builder');
 const OrderBuilder = require('./order-builder');
 
+const constructors = {
+  filter: WhereBuilder,
+  order: OrderBuilder,
+};
+
 class SearchBuilder extends BuilderAbstract {
   getWhereQuery() {
-    return SearchBuilder
-      .prepareResponse(new WhereBuilder(this.Sequelize, this.request[this.config.fields.filter])
-        .setConfig(this.config)
-        .getQuery());
+    return this.getQueryByType('filter');
   }
 
   getOrderQuery() {
+    return this.getQueryByType('order');
+  }
+
+  getQueryByType(type) {
+    const request = this.request[this.config.fields[type]];
     return SearchBuilder
-      .prepareResponse(new OrderBuilder(this.Sequelize, this.request[this.config.fields.order])
+      .prepareResponse(new constructors[type](this.Sequelize, request)
         .setConfig(this.config)
         .getQuery());
   }
