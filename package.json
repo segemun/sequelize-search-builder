@@ -38,7 +38,6 @@
     "config/"
   ],
   "dependencies": {
-    "lodash.isempty": "^4.4.0",
     "lodash.merge": "^4.6.2",
     "qs": "^6.9.0",
     "rc": "^1.2.8",
