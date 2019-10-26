@@ -175,4 +175,9 @@ module.exports = [
       key: 'value',
     },
   },
+  {
+    it: 'Equal simple (key=value)',
+    request: null,
+    expected: null,
+  },
 ];

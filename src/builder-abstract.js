@@ -31,7 +31,7 @@ class BuilderAbstract {
       return qs.parse(request, { ignoreQueryPrefix: true });
     }
 
-    return request;
+    return request || {};
   }
 }
 
