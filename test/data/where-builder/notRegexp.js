@@ -2,15 +2,15 @@ const Sequelize = require('sequelize');
 
 module.exports = [
   {
-    it: 'Regexp operator simple (key[regexp]=value)',
+    it: 'Not Regexp operator simple (key[notRegexp]=value)',
     request: {
       key: {
-        regexp: 'value',
+        notRegexp: 'value',
       },
     },
     expected: {
       key: {
-        [Sequelize.Op.regexp]: 'value',
+        [Sequelize.Op.notRegexp]: 'value',
       },
     },
   },
