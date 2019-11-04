@@ -141,6 +141,7 @@ Git repository with DB tests: https://github.com/segemun/sequelize-search-builde
 | notILike      | Sequelize.Op.notILike   | case insensitive NOT LIKE (PG only)
 | regexp        | Sequelize.Op.regexp     | Regexp (MySQL and PG only)
 | notRegexp     | Sequelize.Op.notRegexp  | Not Regexp (MySQL and PG only)
+| iRegexp       | Sequelize.Op.iRegexp    | iRegexp (case insensitive) (PG only)
 
 ## Configuration
 
