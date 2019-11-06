@@ -1,7 +1,7 @@
 const BuilderAbstract = require('./builder-abstract');
 const helper = require('./helper');
 
-const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike', 'regexp', 'notRegexp', 'iRegexp'];
+const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike', 'regexp', 'notRegexp', 'iRegexp', 'notIRegexp'];
 const allowedConditionsArray = ['between', 'notBetween', 'in', 'notIn'];
 
 class WhereBuilder extends BuilderAbstract {
