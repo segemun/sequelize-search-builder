@@ -8,14 +8,27 @@ const constructors = {
 };
 
 class SearchBuilder extends BuilderAbstract {
+  /**
+   * Get object with sequelize where conditions
+   * @returns {(object|null)} sequelize where query
+   */
   getWhereQuery() {
     return this.getQueryByType('filter');
   }
 
+  /**
+   * Get object with sequelize order conditions
+   * @returns {(object|null)} sequelize order query
+   */
   getOrderQuery() {
     return this.getQueryByType('order');
   }
 
+  /**
+   * Get object with sequelize conditions by type
+   * @param {string} type
+   * @returns {(object|null)} sequelize query
+   */
   getQueryByType(type) {
     const request = this.request[this.config.fields[type]];
     return SearchBuilder
@@ -24,14 +37,27 @@ class SearchBuilder extends BuilderAbstract {
         .getQuery());
   }
 
+  /**
+   * Get string with limit value
+   * @returns {(int|null)} limit value
+   */
   getLimitQuery() {
     return SearchBuilder.prepareIntegerQuery(this.request[this.config.fields.limit]) || this.config['default-limit'] || null;
   }
 
+  /**
+   * Get string with offset value
+   * @returns {(int|null)} offset value
+   */
   getOffsetQuery() {
     return SearchBuilder.prepareIntegerQuery(this.request[this.config.fields.offset]) || null;
   }
 
+  /**
+   * Get object with all sequelize conditions (where, order, limit, offset)
+   * @param {object} target object for extending
+   * @returns {object} sequelize queries with all conditions
+   */
   getFullQuery(target = {}) {
     return Object.assign({}, target, {
       where: this.getWhereQuery(),
@@ -41,11 +67,21 @@ class SearchBuilder extends BuilderAbstract {
     });
   }
 
+  /**
+   * Prepare sequelize query for response
+   * @param {object} sequelize query
+   * @returns {(object|null)} sequelize query
+   */
   static prepareResponse(query) {
     return (Object.keys(query).length === 0
     && Object.getOwnPropertySymbols(query).length === 0) ? null : query;
   }
 
+  /**
+   * Prepare integer response (limit and offset values)
+   * @param {string} string value
+   * @returns {(int|null)} integer value
+   */
   static prepareIntegerQuery(query) {
     const intQuery = parseInt(query, 10);
     return (Number.isInteger(intQuery) && intQuery >= 0) ? intQuery : null;
