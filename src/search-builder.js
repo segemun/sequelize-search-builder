@@ -10,7 +10,7 @@ const constructors = {
 class SearchBuilder extends BuilderAbstract {
   /**
    * Get object with sequelize where conditions
-   * @returns {(object|null)} sequelize where query
+   * @returns {(Object|null)} sequelize where query
    */
   getWhereQuery() {
     return this.getQueryByType('filter');
@@ -18,7 +18,7 @@ class SearchBuilder extends BuilderAbstract {
 
   /**
    * Get object with sequelize order conditions
-   * @returns {(object|null)} sequelize order query
+   * @returns {(Object|null)} sequelize order query
    */
   getOrderQuery() {
     return this.getQueryByType('order');
@@ -27,7 +27,7 @@ class SearchBuilder extends BuilderAbstract {
   /**
    * Get object with sequelize conditions by type
    * @param {string} type
-   * @returns {(object|null)} sequelize query
+   * @returns {(Object|null)} sequelize query
    */
   getQueryByType(type) {
     const request = this.request[this.config.fields[type]];
@@ -55,8 +55,8 @@ class SearchBuilder extends BuilderAbstract {
 
   /**
    * Get object with all sequelize conditions (where, order, limit, offset)
-   * @param {object} target object for extending
-   * @returns {object} sequelize queries with all conditions
+   * @param {Object} target object for extending
+   * @returns {Object} sequelize queries with all conditions
    */
   getFullQuery(target = {}) {
     return Object.assign({}, target, {
@@ -69,8 +69,8 @@ class SearchBuilder extends BuilderAbstract {
 
   /**
    * Prepare sequelize query for response
-   * @param {object} sequelize query
-   * @returns {(object|null)} sequelize query
+   * @param {Object} sequelize query
+   * @returns {(Object|null)} sequelize query
    */
   static prepareResponse(query) {
     return (Object.keys(query).length === 0
