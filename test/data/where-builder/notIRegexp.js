@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Op } = require('sequelize');
 
 module.exports = [
   {
@@ -10,7 +10,7 @@ module.exports = [
     },
     expected: {
       key: {
-        [Sequelize.Op.notIRegexp]: 'value',
+        [Op.notIRegexp]: 'value',
       },
     },
   },
@@ -19,7 +19,7 @@ module.exports = [
     request: 'filter[key][notIRegexp]=value',
     expected: {
       key: {
-        [Sequelize.Op.notIRegexp]: 'value',
+        [Op.notIRegexp]: 'value',
       },
     },
   },

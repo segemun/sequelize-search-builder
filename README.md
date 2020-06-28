@@ -89,18 +89,18 @@ filter[age][gt]=100&filter[age][lt]=10&filter[age][_condition]=or&filter[name][i
 }
 // getWhereQuery()
 {
-  [Sequelize.Op.or]: {
-    [Sequelize.Op.or]: [{
+  [Op.or]: {
+    [Op.or]: [{
       age: {
-        [Sequelize.Op.gt]: 100,
+        [Op.gt]: 100,
       },
     }, {
       age: {
-        [Sequelize.Op.lt]: 10,
+        [Op.lt]: 10,
       },
     }],
     name: {
-      [Sequelize.Op.like]: '%john%',
+      [Op.like]: '%john%',
     },
   },
 }
@@ -126,23 +126,23 @@ Git repository with DB tests: https://github.com/segemun/sequelize-search-builde
 | Request Option|Sequelize Symbol         |Description |
 |---------------|-------------------------|------------|
 | eq (=)        | = (no Symbol)           | Equal
-| gt            | Sequelize.Op.gt         | Greater than
-| gte           | Sequelize.Op.gte        | Greater than or equal
-| lt            | Sequelize.Op.lt         | Less than
-| lte           | Sequelize.Op.lte        | Less than or equal
-| ne            | Sequelize.Op.ne         | Not equal
-| between       | Sequelize.Op.between    | Between [value1, value2]
-| notBetween    | Sequelize.Op.notBetween | Not Between [value1, value2]
-| in            | Sequelize.Op.in         | In value list [value1, value2, ...]
-| notIn         | Sequelize.Op.notIn      | Not in value list [value1, value2, ...]
-| like          | Sequelize.Op.like       | Like search (%value, value%, %value%)
-| notLike       | Sequelize.Op.notLike    | Not like search (%value, value%, %value%)
-| iLike         | Sequelize.Op.iLike      | case insensitive LIKE (PG only)
-| notILike      | Sequelize.Op.notILike   | case insensitive NOT LIKE (PG only)
-| regexp        | Sequelize.Op.regexp     | Regexp (MySQL and PG only)
-| notRegexp     | Sequelize.Op.notRegexp  | Not Regexp (MySQL and PG only)
-| iRegexp       | Sequelize.Op.iRegexp    | iRegexp (case insensitive) (PG only)
-| notIRegexp    | Sequelize.Op.notIRegexp | notIRegexp (case insensitive) (PG only)
+| gt            | Op.gt         | Greater than
+| gte           | Op.gte        | Greater than or equal
+| lt            | Op.lt         | Less than
+| lte           | Op.lte        | Less than or equal
+| ne            | Op.ne         | Not equal
+| between       | Op.between    | Between [value1, value2]
+| notBetween    | Op.notBetween | Not Between [value1, value2]
+| in            | Op.in         | In value list [value1, value2, ...]
+| notIn         | Op.notIn      | Not in value list [value1, value2, ...]
+| like          | Op.like       | Like search (%value, value%, %value%)
+| notLike       | Op.notLike    | Not like search (%value, value%, %value%)
+| iLike         | Op.iLike      | case insensitive LIKE (PG only)
+| notILike      | Op.notILike   | case insensitive NOT LIKE (PG only)
+| regexp        | Op.regexp     | Regexp (MySQL and PG only)
+| notRegexp     | Op.notRegexp  | Not Regexp (MySQL and PG only)
+| iRegexp       | Op.iRegexp    | iRegexp (case insensitive) (PG only)
+| notIRegexp    | Op.notIRegexp | notIRegexp (case insensitive) (PG only)
 
 ## Configuration
 
