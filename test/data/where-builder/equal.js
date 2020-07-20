@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Op } = require('sequelize');
 
 module.exports = [
   {
@@ -58,7 +58,7 @@ module.exports = [
       key2: 'value2',
     },
     expected: {
-      [Sequelize.Op.or]: {
+      [Op.or]: {
         key1: 'value1',
         key2: 'value2',
       },
@@ -72,7 +72,7 @@ module.exports = [
       key2: 'value2',
     },
     expected: {
-      [Sequelize.Op.or]: {
+      [Op.or]: {
         key1: 'value1',
         key2: 'value2',
       },
@@ -127,7 +127,7 @@ module.exports = [
       },
     },
     expected: {
-      [Sequelize.Op.or]: {
+      [Op.or]: {
         key1: 'value1',
         key2: 'value2',
       },
@@ -145,7 +145,7 @@ module.exports = [
       },
     },
     expected: {
-      [Sequelize.Op.and]: {
+      [Op.and]: {
         key1: 'value1',
         key2: 'value2',
       },
@@ -155,7 +155,7 @@ module.exports = [
     it: '(string request) Equal operator with AND condition (?filter[key1][eq]=value1&filter[key2][eq]=value2&filter[_condition]=and)',
     request: 'filter[key1][eq]=value1&filter[key2][eq]=value2&filter[_condition]=and',
     expected: {
-      [Sequelize.Op.and]: {
+      [Op.and]: {
         key1: 'value1',
         key2: 'value2',
       },

@@ -1,5 +1,6 @@
 const BuilderAbstract = require('./builder-abstract');
 const helper = require('./helper');
+const { Op } = require('sequelize');
 
 const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike', 'regexp', 'notRegexp', 'iRegexp', 'notIRegexp'];
 const allowedConditionsArray = ['between', 'notBetween', 'in', 'notIn'];
@@ -21,21 +22,19 @@ class WhereBuilder extends BuilderAbstract {
         }
       }
     });
-
     return this._getConditionQuery(query, request);
   }
 
   _getConditionQuery(query, request) {
     const { Sequelize } = this;
     let conditionQuery = {};
-
     if (typeof request._condition === 'string') {
       conditionQuery = {
-        [Sequelize.Op[request._condition]]: query,
+        [Op[request._condition]]: query,
       };
     } else if (Array.isArray(query) && query.length > 1) {
       conditionQuery = {
-        [Sequelize.Op.and]: query,
+        [Op.and]: query,
       };
     } else {
       conditionQuery = query;
@@ -61,7 +60,7 @@ class WhereBuilder extends BuilderAbstract {
         || (allowedConditionsArray.includes(key) && Array.isArray(value))) {
           fieldQuery.push({
             [fieldKey]: {
-              [Sequelize.Op[key]]: value,
+              [Op[key]]: value,
             },
           });
         } else {

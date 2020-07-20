@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const { Op } = require('sequelize');
 
 module.exports = [
   {
@@ -10,7 +10,7 @@ module.exports = [
     },
     expected: {
       key: {
-        [Sequelize.Op.like]: 'value',
+        [Op.like]: 'value',
       },
     },
   },
@@ -23,7 +23,7 @@ module.exports = [
     },
     expected: {
       '$key.key$': {
-        [Sequelize.Op.like]: 'value',
+        [Op.like]: 'value',
       },
     },
   },
@@ -39,10 +39,10 @@ module.exports = [
     },
     expected: {
       key1: {
-        [Sequelize.Op.like]: 'value1',
+        [Op.like]: 'value1',
       },
       key2: {
-        [Sequelize.Op.like]: 'value2',
+        [Op.like]: 'value2',
       },
     },
   },
