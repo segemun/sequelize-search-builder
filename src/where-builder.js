@@ -1,6 +1,8 @@
+/* eslint class-methods-use-this: ["error", { "exceptMethods": ["_getConditionQuery"] }] */
+
+const { Op } = require('sequelize');
 const BuilderAbstract = require('./builder-abstract');
 const helper = require('./helper');
-const { Op } = require('sequelize');
 
 const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike', 'regexp', 'notRegexp', 'iRegexp', 'notIRegexp'];
 const allowedConditionsArray = ['between', 'notBetween', 'in', 'notIn'];
@@ -26,7 +28,6 @@ class WhereBuilder extends BuilderAbstract {
   }
 
   _getConditionQuery(query, request) {
-    const { Sequelize } = this;
     let conditionQuery = {};
     if (typeof request._condition === 'string') {
       conditionQuery = {
@@ -44,7 +45,6 @@ class WhereBuilder extends BuilderAbstract {
   }
 
   _getFieldQuery(fieldKey, values) {
-    const { Sequelize } = this;
     const fieldQuery = [];
 
     Object.keys(values)
