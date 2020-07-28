@@ -106,7 +106,7 @@ filter[age][gt]=100&filter[age][lt]=10&filter[age][_condition]=or&filter[name][i
 }
 ```
 
-If _condition parameter is absent - "and" will be use by default
+If _condition parameter is absent - "and" will be used by default
 
 #### Order:
 ```javascript
