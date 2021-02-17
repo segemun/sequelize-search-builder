@@ -17,7 +17,7 @@ class WhereBuilder extends BuilderAbstract {
       const fieldKey = helper.getFieldKey(key);
 
       if (helper.isComparableField(fieldKey)) {
-        if (Array.isArray(fieldValue) || typeof fieldValue === 'string') {
+        if (Array.isArray(fieldValue) || typeof fieldValue === 'string' || typeof fieldValue === 'number') {
           Object.assign(query, helper.getEqualOp(fieldKey, fieldValue));
         } else if (typeof fieldValue === 'object') {
           Object.assign(query, this._getFieldQuery(fieldKey, fieldValue));
