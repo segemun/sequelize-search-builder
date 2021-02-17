@@ -176,6 +176,9 @@ new searchBuilder(models.Sequelize, req.query)
     });
 ```
 
+## Front-End
+You can use [Sequelize Search Builder Client](http://github.com/segemun/sequelize-search-builder-client) module for the generation request http search string on the client side.
+
 ## Contribute
 You are Welcome =)
 Keep in mind:
