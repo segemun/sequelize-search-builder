@@ -29,7 +29,7 @@ class WhereBuilder extends BuilderAbstract {
 
   _getConditionQuery(query, request) {
     let conditionQuery = {};
-    if (typeof request._condition === 'string') {
+    if (typeof request._condition === 'string' && typeof query === 'object' && Object.keys(query).length !== 0) {
       conditionQuery = {
         [Op[request._condition]]: query,
       };
