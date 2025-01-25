@@ -4,7 +4,7 @@ const defaultConfig = require('../config');
 const config = rc('sequelize-search-builder', defaultConfig);
 
 const helpers = {
-  isComparableField: key => key[0] !== '_',
+  isComparableField: (key) => key[0] !== '_',
 
   getFieldKey: (key) => {
     let result = key;

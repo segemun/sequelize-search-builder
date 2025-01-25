@@ -59,12 +59,13 @@ class SearchBuilder extends BuilderAbstract {
    * @returns {Object} sequelize queries with all conditions
    */
   getFullQuery(target = {}) {
-    return Object.assign({}, target, {
+    return {
+      ...target,
       where: this.getWhereQuery(),
       order: this.getOrderQuery(),
       limit: this.getLimitQuery(),
       offset: this.getOffsetQuery(),
-    });
+    };
   }
 
   /**

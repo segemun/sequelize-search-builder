@@ -185,3 +185,6 @@ Keep in mind:
 ```sh
 npm run test
 ```
+```sh
+./node_modules/.bin/eslint .
+```
