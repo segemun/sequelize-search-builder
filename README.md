@@ -137,6 +137,8 @@ Git repository with DB tests: https://github.com/segemun/sequelize-search-builde
 | notIn         | Op.notIn      | Not in value list [value1, value2, ...]
 | like          | Op.like       | Like search (%value, value%, %value%)
 | notLike       | Op.notLike    | Not like search (%value, value%, %value%)
+| is            | Op.is         | is (used to check for NULL and boolean values)
+| not           | Op.not        | not (used to check for NULL and boolean values)
 | iLike         | Op.iLike      | case insensitive LIKE (PG only)
 | notILike      | Op.notILike   | case insensitive NOT LIKE (PG only)
 | regexp        | Op.regexp     | Regexp (MySQL and PG only)
