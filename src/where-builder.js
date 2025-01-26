@@ -4,7 +4,7 @@ const { Op } = require('sequelize');
 const BuilderAbstract = require('./builder-abstract');
 const helper = require('./helper');
 
-const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike', 'regexp', 'notRegexp', 'iRegexp', 'notIRegexp'];
+const allowedConditions = ['gt', 'gte', 'lt', 'lte', 'ne', 'like', 'notLike', 'iLike', 'notILike', 'regexp', 'notRegexp', 'iRegexp', 'notIRegexp', 'is', 'not'];
 const allowedConditionsArray = ['between', 'notBetween', 'in', 'notIn'];
 
 class WhereBuilder extends BuilderAbstract {
@@ -58,11 +58,19 @@ class WhereBuilder extends BuilderAbstract {
           );
         } else if (allowedConditions.includes(key)
         || (allowedConditionsArray.includes(key) && Array.isArray(value))) {
-          fieldQuery.push({
-            [fieldKey]: {
-              [Op[key]]: value,
-            },
-          });
+          if (['is', 'not'].includes(key) && value === 'null') {
+            fieldQuery.push({
+              [fieldKey]: {
+                [Op[key]]: null,
+              },
+            });
+          } else {
+            fieldQuery.push({
+              [fieldKey]: {
+                [Op[key]]: value,
+              },
+            });
+          }
         } else {
           helper.log('error', `${key} operator is missing`);
         }
