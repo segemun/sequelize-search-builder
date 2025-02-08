@@ -1,13 +1,13 @@
 {
   "name": "sequelize-search-builder",
   "description": "Minimalist library for parsing search request to sequelize query",
-  "version": "0.13.0",
+  "version": "0.13.1",
   "author": "Sergey Mukhin (segemun) <sergeymukhin21@gmail.com>",
   "main": "index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/segemun/sequelize-search-builder.git"
+    "url": "https://github.com/SequelizeSearchBuilder/sequelize-search-builder.git"
   },
   "keywords": [
     "sequelize-search-builder",

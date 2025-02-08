@@ -1,3 +1,5 @@
+🚨 This package has moved! It is now maintained under [@SequelizeSearchBuilder](https://github.com/SequelizeSearchBuilder).
+
 # Sequelize Search Builder
 ## About
 This is a lightweight library to convert search request (e.g. HTTP) to Sequelize ORM query.
@@ -120,7 +122,7 @@ If _condition parameter is absent - "and" will be used by default
 
 You can find more examples in the tests of the project (test/index.js)
 
-Git repository with DB tests: https://github.com/segemun/sequelize-search-builder-db-tests
+Git repository with DB tests: https://github.com/SequelizeSearchBuilder/sequelize-search-builder-db-tests
 
 ## Allowed query conditions
 | Request Option|Sequelize Symbol         |Description |
@@ -179,7 +181,7 @@ new searchBuilder(models.Sequelize, req.query)
 ```
 
 ## Front-End
-You can use [Sequelize Search Builder Client](http://github.com/segemun/sequelize-search-builder-client) module for the generation request http search string on the client side.
+You can use [Sequelize Search Builder Client](http://github.com/SequelizeSearchBuilder/sequelize-search-builder-client) module for the generation request http search string on the client side.
 
 ## Contribute
 You are Welcome =)
