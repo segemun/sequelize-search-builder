@@ -1,8 +1,8 @@
 {
   "name": "sequelize-search-builder",
   "description": "Minimalist library for parsing search request to sequelize query",
-  "version": "0.13.1",
-  "author": "Sergey Mukhin (segemun) <sergeymukhin21@gmail.com>",
+  "version": "0.13.2",
+  "author": "Serhii Mukhin (segemun) <sergeymukhin21@gmail.com>",
   "main": "index.js",
   "license": "MIT",
   "repository": {

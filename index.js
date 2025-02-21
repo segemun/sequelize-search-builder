@@ -1,6 +1,6 @@
 /*!
  * sequelize-search-builder
- * Copyright(c) 2019 - present, Sergey Mukhin (segemun)
+ * Copyright(c) 2019 - present, Serhii Mukhin (segemun)
  * Contacts: sergeymukhin21@gmail.com
  * MIT Licensed
  */
